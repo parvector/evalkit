@@ -35,13 +35,16 @@ class StatsLog:
         :<str>
             A string of statistical information.
         """
+
+
         self.__gen += 1
         self.log[self.__gen] = {}
+        #calculate value of funcs
         for func in [self.funcs, self.viznt_funcs]:
             self.log[self.__gen][f"{func.__name__}"] = func( pop )
 
+        #create string for return
         ret_str = f"{self.__gen}"+"|"+self.spaces
-
         for key in self.log[self.__gen]:
             if key not in [ func.__name__ for func in self.viznt_funcs ]:
                 ret_str += str(self.log[self.__gen][key])+"|"+self.spaces
