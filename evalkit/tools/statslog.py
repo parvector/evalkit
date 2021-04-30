@@ -54,6 +54,6 @@ class StatsLog:
     def __create_headers(self):
         str_headers = "gen" + "|" + self.spaces
         for func in self.funcs:
-            if func.__name__ not in [ func.__name__ for func in self.non_viz_funcs ]:
+            if func.__name__ not in [ func.__name__ for func in self.viznt_funcs ]:
                 str_headers += func.__name__ + "|" + self.spaces
         return str_headers
