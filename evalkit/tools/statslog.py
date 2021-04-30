@@ -19,7 +19,7 @@ class StatsLog:
         Path for writing statistical information to a csv or json file.
         """
         self.funcs = funcs
-        self.non_viz_funcs = viznt_funcs
+        self.viznt_funcs = viznt_funcs
         self.spaces = spaces
         self.headers = self.__create_headers()
         self.log = {}
@@ -37,12 +37,13 @@ class StatsLog:
         """
         self.__gen += 1
         self.log[self.__gen] = {}
-        for func in self.funcs:
+        for func in [self.funcs, self.viznt_funcs]:
             self.log[self.__gen][f"{func.__name__}"] = func( pop )
 
         ret_str = f"{self.__gen}"+"|"+self.spaces
+
         for key in self.log[self.__gen]:
-            if key not in [ func.__name__ for func in self.non_viz_funcs ]:
+            if key not in [ func.__name__ for func in self.viznt_funcs ]:
                 ret_str += str(self.log[self.__gen][key])+"|"+self.spaces
             
         return ret_str
