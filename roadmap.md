@@ -7,4 +7,4 @@
 |5|Function for replacing individuals|Substitution of individuals at a given similarity.|-|
 |6|Limiting Functions.|Functions with restriction conditions for traits of an individual.|-|
 |7|A condition for the formation of a trait.|Ability to form a feature with a condition in the description and with access to other formed features.|-|
-|8|Results to file.|Ability to record results in a file.|-|
+|8|Results to file.|Ability to record results in a file.|+/0.2|
