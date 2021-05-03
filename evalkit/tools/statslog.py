@@ -22,6 +22,8 @@ class StatsLog:
         self.__path = path
         if self.__path != None:
             self.__doc = open(self.__path, "w")
+        else:
+            self.__doc = None
         self.headers = self.__create_headers()
         self.log = {}
         self.__gen = 0
@@ -51,7 +53,8 @@ class StatsLog:
                 ret_str += str(self.log[self.__gen][key])+"|"+self.spaces
         
         #write string to doc
-        self.__write_doc(string=ret_str)
+        if self.__doc != None:
+            self.__write_doc(string=ret_str)
         return ret_str
 
     def __write_doc(self, string):
@@ -62,5 +65,6 @@ class StatsLog:
         for func in self.funcs:
             if func.__name__ not in [ func.__name__ for func in self.viznt_funcs ]:
                 str_headers += func.__name__ + "|" + self.spaces
-        self.__doc.write(str_headers+"\n")
+        if self.__doc != None:
+            self.__doc.write(string=str_headers+"\n")
         return str_headers
